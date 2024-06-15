@@ -77,7 +77,7 @@ docker-compose up
 这是最简配置以便快速开始。如果你想要更多的配置，请参考以下文档：
 
 - [📚 registry 官方文档](https://docs.docker.com/registry/)
-- [📝 模版配置](https://github.com/akazwz/dockermirror/registry)
+- [📝 模版配置](registry)
 
 ## 📝注意事项
 
