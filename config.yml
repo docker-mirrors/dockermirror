@@ -1,0 +1,29 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+  level: warn
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry
+
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
+maintenance:
+  readonly:
+      enabled: true
+
+proxy:
+  remoteurl: https://registry-1.docker.io # 这是 docker hub 的地址. 如果你想使用其他的镜像源, 请修改这个地址
+  ttl: 168h

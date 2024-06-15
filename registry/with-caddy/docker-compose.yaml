@@ -1,0 +1,33 @@
+version: "3"
+
+services: 
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    env_file: 
+      - .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./config.yml:/etc/docker/registry/config.yml
+      - /root/data:/var/lib/registry
+    networks:
+      - caddy
+  
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true
